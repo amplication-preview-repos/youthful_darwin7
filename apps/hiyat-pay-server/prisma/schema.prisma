@@ -39,6 +39,28 @@ model BankTransfer {
   updatedAt    DateTime                @updatedAt
 }
 
+model UserProfile {
+  bio               String?
+  comments          String?
+  coverPhoto        Json?
+  createdAt         DateTime                          @default(now())
+  emojiSettings     EnumUserProfileEmojiSettings?
+  heartColor        EnumUserProfileHeartColor?
+  heartEmojiColor   EnumUserProfileHeartEmojiColor?
+  id                String                            @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked         Boolean?
+  isSpam            Boolean?
+  likes             Int?
+  messageRequests   Boolean?
+  privacy           EnumUserProfilePrivacy?
+  profilePicture    Json?
+  profilePrivacy    EnumUserProfileProfilePrivacy?
+  tagName           String?
+  updatedAt         DateTime                          @updatedAt
+  userEmojiSettings EnumUserProfileUserEmojiSettings?
+  username          String?
+}
+
 model Review {
   comment    String?
   createdAt  DateTime  @default(now())
@@ -81,17 +103,6 @@ model FreelanceJob {
   postedDate     DateTime?
   updatedAt      DateTime                       @updatedAt
   user           String?
-}
-
-model UserProfile {
-  bio            String?
-  coverPhoto     Json?
-  createdAt      DateTime @default(now())
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  profilePicture Json?
-  tagName        String?
-  updatedAt      DateTime @updatedAt
-  username       String?
 }
 
 model Matchmaking {
@@ -162,6 +173,30 @@ enum EnumP2PTransferStatus {
 }
 
 enum EnumBankTransferStatus {
+  Option1
+}
+
+enum EnumUserProfileEmojiSettings {
+  Option1
+}
+
+enum EnumUserProfileHeartColor {
+  Option1
+}
+
+enum EnumUserProfileHeartEmojiColor {
+  Option1
+}
+
+enum EnumUserProfilePrivacy {
+  Option1
+}
+
+enum EnumUserProfileProfilePrivacy {
+  Option1
+}
+
+enum EnumUserProfileUserEmojiSettings {
   Option1
 }
 

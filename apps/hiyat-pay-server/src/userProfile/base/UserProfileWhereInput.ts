@@ -13,9 +13,17 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { IsOptional, IsEnum } from "class-validator";
 import { JsonFilter } from "../../util/JsonFilter";
+import { EnumUserProfileEmojiSettings } from "./EnumUserProfileEmojiSettings";
+import { EnumUserProfileHeartColor } from "./EnumUserProfileHeartColor";
+import { EnumUserProfileHeartEmojiColor } from "./EnumUserProfileHeartEmojiColor";
 import { StringFilter } from "../../util/StringFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { EnumUserProfilePrivacy } from "./EnumUserProfilePrivacy";
+import { EnumUserProfileProfilePrivacy } from "./EnumUserProfileProfilePrivacy";
+import { EnumUserProfileUserEmojiSettings } from "./EnumUserProfileUserEmojiSettings";
 
 @InputType()
 class UserProfileWhereInput {
@@ -32,6 +40,17 @@ class UserProfileWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  comments?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: JsonFilter,
   })
   @Type(() => JsonFilter)
@@ -40,6 +59,39 @@ class UserProfileWhereInput {
     nullable: true,
   })
   coverPhoto?: JsonFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileEmojiSettings,
+  })
+  @IsEnum(EnumUserProfileEmojiSettings)
+  @IsOptional()
+  @Field(() => EnumUserProfileEmojiSettings, {
+    nullable: true,
+  })
+  emojiSettings?: "Option1";
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileHeartColor,
+  })
+  @IsEnum(EnumUserProfileHeartColor)
+  @IsOptional()
+  @Field(() => EnumUserProfileHeartColor, {
+    nullable: true,
+  })
+  heartColor?: "Option1";
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileHeartEmojiColor,
+  })
+  @IsEnum(EnumUserProfileHeartEmojiColor)
+  @IsOptional()
+  @Field(() => EnumUserProfileHeartEmojiColor, {
+    nullable: true,
+  })
+  heartEmojiColor?: "Option1";
 
   @ApiProperty({
     required: false,
@@ -54,6 +106,61 @@ class UserProfileWhereInput {
 
   @ApiProperty({
     required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  isBlocked?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  isSpam?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntNullableFilter,
+  })
+  @Type(() => IntNullableFilter)
+  @IsOptional()
+  @Field(() => IntNullableFilter, {
+    nullable: true,
+  })
+  likes?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  messageRequests?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfilePrivacy,
+  })
+  @IsEnum(EnumUserProfilePrivacy)
+  @IsOptional()
+  @Field(() => EnumUserProfilePrivacy, {
+    nullable: true,
+  })
+  privacy?: "Option1";
+
+  @ApiProperty({
+    required: false,
     type: JsonFilter,
   })
   @Type(() => JsonFilter)
@@ -65,6 +172,17 @@ class UserProfileWhereInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileProfilePrivacy,
+  })
+  @IsEnum(EnumUserProfileProfilePrivacy)
+  @IsOptional()
+  @Field(() => EnumUserProfileProfilePrivacy, {
+    nullable: true,
+  })
+  profilePrivacy?: "Option1";
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -73,6 +191,17 @@ class UserProfileWhereInput {
     nullable: true,
   })
   tagName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserEmojiSettings,
+  })
+  @IsEnum(EnumUserProfileUserEmojiSettings)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserEmojiSettings, {
+    nullable: true,
+  })
+  userEmojiSettings?: "Option1";
 
   @ApiProperty({
     required: false,

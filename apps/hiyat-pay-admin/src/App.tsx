@@ -17,6 +17,10 @@ import { BankTransferList } from "./bankTransfer/BankTransferList";
 import { BankTransferCreate } from "./bankTransfer/BankTransferCreate";
 import { BankTransferEdit } from "./bankTransfer/BankTransferEdit";
 import { BankTransferShow } from "./bankTransfer/BankTransferShow";
+import { UserProfileList } from "./userProfile/UserProfileList";
+import { UserProfileCreate } from "./userProfile/UserProfileCreate";
+import { UserProfileEdit } from "./userProfile/UserProfileEdit";
+import { UserProfileShow } from "./userProfile/UserProfileShow";
 import { ReviewList } from "./review/ReviewList";
 import { ReviewCreate } from "./review/ReviewCreate";
 import { ReviewEdit } from "./review/ReviewEdit";
@@ -33,10 +37,6 @@ import { FreelanceJobList } from "./freelanceJob/FreelanceJobList";
 import { FreelanceJobCreate } from "./freelanceJob/FreelanceJobCreate";
 import { FreelanceJobEdit } from "./freelanceJob/FreelanceJobEdit";
 import { FreelanceJobShow } from "./freelanceJob/FreelanceJobShow";
-import { UserProfileList } from "./userProfile/UserProfileList";
-import { UserProfileCreate } from "./userProfile/UserProfileCreate";
-import { UserProfileEdit } from "./userProfile/UserProfileEdit";
-import { UserProfileShow } from "./userProfile/UserProfileShow";
 import { MatchmakingList } from "./matchmaking/MatchmakingList";
 import { MatchmakingCreate } from "./matchmaking/MatchmakingCreate";
 import { MatchmakingEdit } from "./matchmaking/MatchmakingEdit";
@@ -105,6 +105,13 @@ const App = (): React.ReactElement => {
           show={BankTransferShow}
         />
         <Resource
+          name="UserProfile"
+          list={UserProfileList}
+          edit={UserProfileEdit}
+          create={UserProfileCreate}
+          show={UserProfileShow}
+        />
+        <Resource
           name="Review"
           list={ReviewList}
           edit={ReviewEdit}
@@ -131,13 +138,6 @@ const App = (): React.ReactElement => {
           edit={FreelanceJobEdit}
           create={FreelanceJobCreate}
           show={FreelanceJobShow}
-        />
-        <Resource
-          name="UserProfile"
-          list={UserProfileList}
-          edit={UserProfileEdit}
-          create={UserProfileCreate}
-          show={UserProfileShow}
         />
         <Resource
           name="Matchmaking"

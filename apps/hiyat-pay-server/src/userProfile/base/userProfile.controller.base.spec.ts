@@ -19,16 +19,26 @@ const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   bio: "exampleBio",
+  comments: "exampleComments",
   createdAt: new Date(),
   id: "exampleId",
+  isBlocked: "true",
+  isSpam: "true",
+  likes: 42,
+  messageRequests: "true",
   tagName: "exampleTagName",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
 const CREATE_RESULT = {
   bio: "exampleBio",
+  comments: "exampleComments",
   createdAt: new Date(),
   id: "exampleId",
+  isBlocked: "true",
+  isSpam: "true",
+  likes: 42,
+  messageRequests: "true",
   tagName: "exampleTagName",
   updatedAt: new Date(),
   username: "exampleUsername",
@@ -36,8 +46,13 @@ const CREATE_RESULT = {
 const FIND_MANY_RESULT = [
   {
     bio: "exampleBio",
+    comments: "exampleComments",
     createdAt: new Date(),
     id: "exampleId",
+    isBlocked: "true",
+    isSpam: "true",
+    likes: 42,
+    messageRequests: "true",
     tagName: "exampleTagName",
     updatedAt: new Date(),
     username: "exampleUsername",
@@ -45,8 +60,13 @@ const FIND_MANY_RESULT = [
 ];
 const FIND_ONE_RESULT = {
   bio: "exampleBio",
+  comments: "exampleComments",
   createdAt: new Date(),
   id: "exampleId",
+  isBlocked: "true",
+  isSpam: "true",
+  likes: 42,
+  messageRequests: "true",
   tagName: "exampleTagName",
   updatedAt: new Date(),
   username: "exampleUsername",
