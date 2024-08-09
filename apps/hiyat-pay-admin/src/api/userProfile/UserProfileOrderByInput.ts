@@ -6,6 +6,7 @@ export type UserProfileOrderByInput = {
   createdAt?: SortOrder;
   id?: SortOrder;
   profilePicture?: SortOrder;
+  tagName?: SortOrder;
   updatedAt?: SortOrder;
   username?: SortOrder;
 };

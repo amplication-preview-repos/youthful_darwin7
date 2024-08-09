@@ -16,6 +16,7 @@ export const UserProfileShow = (props: ShowProps): React.ReactElement => {
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
         <TextField label="profilePicture" source="profilePicture" />
+        <TextField label="tagName" source="tagName" />
         <DateField source="updatedAt" label="Updated At" />
         <TextField label="username" source="username" />
       </SimpleShowLayout>

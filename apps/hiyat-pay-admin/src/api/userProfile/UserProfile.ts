@@ -6,6 +6,7 @@ export type UserProfile = {
   createdAt: Date;
   id: string;
   profilePicture: JsonValue;
+  tagName: string | null;
   updatedAt: Date;
   username: string | null;
 };

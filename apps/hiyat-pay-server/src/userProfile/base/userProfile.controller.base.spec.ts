@@ -21,6 +21,7 @@ const CREATE_INPUT = {
   bio: "exampleBio",
   createdAt: new Date(),
   id: "exampleId",
+  tagName: "exampleTagName",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
@@ -28,6 +29,7 @@ const CREATE_RESULT = {
   bio: "exampleBio",
   createdAt: new Date(),
   id: "exampleId",
+  tagName: "exampleTagName",
   updatedAt: new Date(),
   username: "exampleUsername",
 };
@@ -36,6 +38,7 @@ const FIND_MANY_RESULT = [
     bio: "exampleBio",
     createdAt: new Date(),
     id: "exampleId",
+    tagName: "exampleTagName",
     updatedAt: new Date(),
     username: "exampleUsername",
   },
@@ -44,6 +47,7 @@ const FIND_ONE_RESULT = {
   bio: "exampleBio",
   createdAt: new Date(),
   id: "exampleId",
+  tagName: "exampleTagName",
   updatedAt: new Date(),
   username: "exampleUsername",
 };

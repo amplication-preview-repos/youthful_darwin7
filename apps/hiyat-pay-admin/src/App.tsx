@@ -33,6 +33,10 @@ import { FreelanceJobList } from "./freelanceJob/FreelanceJobList";
 import { FreelanceJobCreate } from "./freelanceJob/FreelanceJobCreate";
 import { FreelanceJobEdit } from "./freelanceJob/FreelanceJobEdit";
 import { FreelanceJobShow } from "./freelanceJob/FreelanceJobShow";
+import { UserProfileList } from "./userProfile/UserProfileList";
+import { UserProfileCreate } from "./userProfile/UserProfileCreate";
+import { UserProfileEdit } from "./userProfile/UserProfileEdit";
+import { UserProfileShow } from "./userProfile/UserProfileShow";
 import { MatchmakingList } from "./matchmaking/MatchmakingList";
 import { MatchmakingCreate } from "./matchmaking/MatchmakingCreate";
 import { MatchmakingEdit } from "./matchmaking/MatchmakingEdit";
@@ -45,10 +49,6 @@ import { BitcoinTransactionList } from "./bitcoinTransaction/BitcoinTransactionL
 import { BitcoinTransactionCreate } from "./bitcoinTransaction/BitcoinTransactionCreate";
 import { BitcoinTransactionEdit } from "./bitcoinTransaction/BitcoinTransactionEdit";
 import { BitcoinTransactionShow } from "./bitcoinTransaction/BitcoinTransactionShow";
-import { UserProfileList } from "./userProfile/UserProfileList";
-import { UserProfileCreate } from "./userProfile/UserProfileCreate";
-import { UserProfileEdit } from "./userProfile/UserProfileEdit";
-import { UserProfileShow } from "./userProfile/UserProfileShow";
 import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
@@ -133,6 +133,13 @@ const App = (): React.ReactElement => {
           show={FreelanceJobShow}
         />
         <Resource
+          name="UserProfile"
+          list={UserProfileList}
+          edit={UserProfileEdit}
+          create={UserProfileCreate}
+          show={UserProfileShow}
+        />
+        <Resource
           name="Matchmaking"
           list={MatchmakingList}
           edit={MatchmakingEdit}
@@ -152,13 +159,6 @@ const App = (): React.ReactElement => {
           edit={BitcoinTransactionEdit}
           create={BitcoinTransactionCreate}
           show={BitcoinTransactionShow}
-        />
-        <Resource
-          name="UserProfile"
-          list={UserProfileList}
-          edit={UserProfileEdit}
-          create={UserProfileCreate}
-          show={UserProfileShow}
         />
         <Resource
           name="User"

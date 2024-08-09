@@ -72,6 +72,17 @@ class UserProfileWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
+  tagName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
   username?: StringNullableFilter;
 }
 

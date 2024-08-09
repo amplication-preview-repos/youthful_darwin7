@@ -7,5 +7,6 @@ export type UserProfileWhereInput = {
   coverPhoto?: JsonFilter;
   id?: StringFilter;
   profilePicture?: JsonFilter;
+  tagName?: StringNullableFilter;
   username?: StringNullableFilter;
 };

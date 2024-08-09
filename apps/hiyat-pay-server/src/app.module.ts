@@ -6,12 +6,13 @@ import { ReviewModule } from "./review/review.module";
 import { MessageModule } from "./message/message.module";
 import { InfluencerPageModule } from "./influencerPage/influencerPage.module";
 import { FreelanceJobModule } from "./freelanceJob/freelanceJob.module";
+import { UserProfileModule } from "./userProfile/userProfile.module";
 import { MatchmakingModule } from "./matchmaking/matchmaking.module";
 import { FreelanceCategoryModule } from "./freelanceCategory/freelanceCategory.module";
 import { BitcoinTransactionModule } from "./bitcoinTransaction/bitcoinTransaction.module";
-import { UserProfileModule } from "./userProfile/userProfile.module";
 import { UserModule } from "./user/user.module";
 import { FilterModule } from "./filter/filter.module";
+import { UserSearchModule } from "./usersearch/usersearch.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -36,12 +37,13 @@ import { AuthModule } from "./auth/auth.module";
     MessageModule,
     InfluencerPageModule,
     FreelanceJobModule,
+    UserProfileModule,
     MatchmakingModule,
     FreelanceCategoryModule,
     BitcoinTransactionModule,
-    UserProfileModule,
     UserModule,
     FilterModule,
+    UserSearchModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

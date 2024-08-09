@@ -83,6 +83,17 @@ model FreelanceJob {
   user           String?
 }
 
+model UserProfile {
+  bio            String?
+  coverPhoto     Json?
+  createdAt      DateTime @default(now())
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  profilePicture Json?
+  tagName        String?
+  updatedAt      DateTime @updatedAt
+  username       String?
+}
+
 model Matchmaking {
   age              Int?
   city             String?
@@ -116,16 +127,6 @@ model BitcoinTransaction {
   transactionType EnumBitcoinTransactionTransactionType?
   updatedAt       DateTime                               @updatedAt
   user            String?
-}
-
-model UserProfile {
-  bio            String?
-  coverPhoto     Json?
-  createdAt      DateTime @default(now())
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  profilePicture Json?
-  updatedAt      DateTime @updatedAt
-  username       String?
 }
 
 model User {

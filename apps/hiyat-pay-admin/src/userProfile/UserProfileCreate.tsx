@@ -8,6 +8,7 @@ export const UserProfileCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="bio" multiline source="bio" />
         <div />
         <div />
+        <TextInput label="tagName" source="tagName" />
         <TextInput label="username" source="username" />
       </SimpleForm>
     </Create>
