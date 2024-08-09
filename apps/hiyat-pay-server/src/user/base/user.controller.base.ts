@@ -26,6 +26,9 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
+import { FilterFindManyArgs } from "../../filter/base/FilterFindManyArgs";
+import { Filter } from "../../filter/base/Filter";
+import { FilterWhereUniqueInput } from "../../filter/base/FilterWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -203,5 +206,114 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/filters")
+  @ApiNestedQuery(FilterFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Filter",
+    action: "read",
+    possession: "any",
+  })
+  async findFilters(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Filter[]> {
+    const query = plainToClass(FilterFindManyArgs, request.query);
+    const results = await this.service.findFilters(params.id, {
+      ...query,
+      select: {
+        avatar: true,
+        createdAt: true,
+        emoji: true,
+        id: true,
+        photo: true,
+        photoDuration: true,
+        photoSharingDuration: true,
+        profileColor: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+
+        userProfileColor: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/filters")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectFilters(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: FilterWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      filters: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/filters")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateFilters(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: FilterWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      filters: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/filters")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectFilters(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: FilterWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      filters: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

@@ -53,6 +53,10 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
+import { FilterList } from "./filter/FilterList";
+import { FilterCreate } from "./filter/FilterCreate";
+import { FilterEdit } from "./filter/FilterEdit";
+import { FilterShow } from "./filter/FilterShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -162,6 +166,13 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
+        />
+        <Resource
+          name="Filter"
+          list={FilterList}
+          edit={FilterEdit}
+          create={FilterCreate}
+          show={FilterShow}
         />
       </Admin>
     </div>

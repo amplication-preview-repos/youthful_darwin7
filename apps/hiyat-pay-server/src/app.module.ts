@@ -11,6 +11,7 @@ import { FreelanceCategoryModule } from "./freelanceCategory/freelanceCategory.m
 import { BitcoinTransactionModule } from "./bitcoinTransaction/bitcoinTransaction.module";
 import { UserProfileModule } from "./userProfile/userProfile.module";
 import { UserModule } from "./user/user.module";
+import { FilterModule } from "./filter/filter.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -40,6 +41,7 @@ import { AuthModule } from "./auth/auth.module";
     BitcoinTransactionModule,
     UserProfileModule,
     UserModule,
+    FilterModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

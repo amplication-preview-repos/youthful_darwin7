@@ -11,8 +11,15 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional, MaxLength } from "class-validator";
+import {
+  IsDate,
+  IsString,
+  IsOptional,
+  ValidateNested,
+  MaxLength,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { Filter } from "../../filter/base/Filter";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
@@ -37,6 +44,15 @@ class User {
     nullable: true,
   })
   email!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Filter],
+  })
+  @ValidateNested()
+  @Type(() => Filter)
+  @IsOptional()
+  filters?: Array<Filter>;
 
   @ApiProperty({
     required: false,
