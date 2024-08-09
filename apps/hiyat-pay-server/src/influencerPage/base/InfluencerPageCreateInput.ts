@@ -19,6 +19,7 @@ import {
   IsInt,
   Min,
   Max,
+  IsBoolean,
 } from "class-validator";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -72,6 +73,17 @@ class InfluencerPageCreateInput {
     nullable: true,
   })
   gifts?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isBlocked?: boolean | null;
 
   @ApiProperty({
     required: false,

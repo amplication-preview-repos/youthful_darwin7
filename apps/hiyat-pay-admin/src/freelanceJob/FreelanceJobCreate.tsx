@@ -1,9 +1,11 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
   CreateProps,
   TextInput,
+  BooleanInput,
   SelectInput,
   DateTimeInput,
 } from "react-admin";
@@ -13,6 +15,7 @@ export const FreelanceJobCreate = (props: CreateProps): React.ReactElement => {
     <Create {...props}>
       <SimpleForm>
         <TextInput label="category" source="category" />
+        <BooleanInput label="isBlocked" source="isBlocked" />
         <TextInput label="jobDescription" multiline source="jobDescription" />
         <TextInput label="jobTitle" source="jobTitle" />
         <SelectInput

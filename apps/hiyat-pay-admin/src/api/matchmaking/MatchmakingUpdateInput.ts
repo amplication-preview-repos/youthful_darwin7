@@ -4,6 +4,7 @@ export type MatchmakingUpdateInput = {
   educationLevel?: string | null;
   eyeColor?: string | null;
   height?: number | null;
+  isBlocked?: boolean | null;
   race?: string | null;
   relationshipType?: "Option1" | null;
   state?: string | null;

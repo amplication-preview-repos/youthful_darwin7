@@ -61,6 +61,17 @@ class FreelanceJobOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  isBlocked?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   jobDescription?: SortOrder;
 
   @ApiProperty({

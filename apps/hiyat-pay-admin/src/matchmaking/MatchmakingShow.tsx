@@ -5,6 +5,7 @@ import {
   ShowProps,
   TextField,
   DateField,
+  BooleanField,
 } from "react-admin";
 
 export const MatchmakingShow = (props: ShowProps): React.ReactElement => {
@@ -18,6 +19,7 @@ export const MatchmakingShow = (props: ShowProps): React.ReactElement => {
         <TextField label="eyeColor" source="eyeColor" />
         <TextField label="height" source="height" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isBlocked" source="isBlocked" />
         <TextField label="race" source="race" />
         <TextField label="relationshipType" source="relationshipType" />
         <TextField label="state" source="state" />

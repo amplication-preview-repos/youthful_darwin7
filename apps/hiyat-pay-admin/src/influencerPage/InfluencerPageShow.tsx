@@ -5,6 +5,7 @@ import {
   ShowProps,
   TextField,
   DateField,
+  BooleanField,
 } from "react-admin";
 
 export const InfluencerPageShow = (props: ShowProps): React.ReactElement => {
@@ -17,6 +18,7 @@ export const InfluencerPageShow = (props: ShowProps): React.ReactElement => {
         <TextField label="followers" source="followers" />
         <TextField label="gifts" source="gifts" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isBlocked" source="isBlocked" />
         <TextField label="likes" source="likes" />
         <TextField label="title" source="title" />
         <DateField source="updatedAt" label="Updated At" />

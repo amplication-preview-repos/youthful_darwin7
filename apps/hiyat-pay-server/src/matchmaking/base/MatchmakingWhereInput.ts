@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, IsEnum } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { EnumMatchmakingRelationshipType } from "./EnumMatchmakingRelationshipType";
 
 @InputType()
@@ -85,6 +86,17 @@ class MatchmakingWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  isBlocked?: BooleanNullableFilter;
 
   @ApiProperty({
     required: false,

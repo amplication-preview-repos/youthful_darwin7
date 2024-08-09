@@ -2,10 +2,10 @@ import { Module } from "@nestjs/common";
 import { SavingsAccountModule } from "./savingsAccount/savingsAccount.module";
 import { P2PTransferModule } from "./p2PTransfer/p2PTransfer.module";
 import { BankTransferModule } from "./bankTransfer/bankTransfer.module";
+import { InfluencerPageModule } from "./influencerPage/influencerPage.module";
 import { UserProfileModule } from "./userProfile/userProfile.module";
 import { ReviewModule } from "./review/review.module";
 import { MessageModule } from "./message/message.module";
-import { InfluencerPageModule } from "./influencerPage/influencerPage.module";
 import { FreelanceJobModule } from "./freelanceJob/freelanceJob.module";
 import { MatchmakingModule } from "./matchmaking/matchmaking.module";
 import { FreelanceCategoryModule } from "./freelanceCategory/freelanceCategory.module";
@@ -33,10 +33,10 @@ import { AuthModule } from "./auth/auth.module";
     SavingsAccountModule,
     P2PTransferModule,
     BankTransferModule,
+    InfluencerPageModule,
     UserProfileModule,
     ReviewModule,
     MessageModule,
-    InfluencerPageModule,
     FreelanceJobModule,
     MatchmakingModule,
     FreelanceCategoryModule,

@@ -17,6 +17,10 @@ import { BankTransferList } from "./bankTransfer/BankTransferList";
 import { BankTransferCreate } from "./bankTransfer/BankTransferCreate";
 import { BankTransferEdit } from "./bankTransfer/BankTransferEdit";
 import { BankTransferShow } from "./bankTransfer/BankTransferShow";
+import { InfluencerPageList } from "./influencerPage/InfluencerPageList";
+import { InfluencerPageCreate } from "./influencerPage/InfluencerPageCreate";
+import { InfluencerPageEdit } from "./influencerPage/InfluencerPageEdit";
+import { InfluencerPageShow } from "./influencerPage/InfluencerPageShow";
 import { UserProfileList } from "./userProfile/UserProfileList";
 import { UserProfileCreate } from "./userProfile/UserProfileCreate";
 import { UserProfileEdit } from "./userProfile/UserProfileEdit";
@@ -29,10 +33,6 @@ import { MessageList } from "./message/MessageList";
 import { MessageCreate } from "./message/MessageCreate";
 import { MessageEdit } from "./message/MessageEdit";
 import { MessageShow } from "./message/MessageShow";
-import { InfluencerPageList } from "./influencerPage/InfluencerPageList";
-import { InfluencerPageCreate } from "./influencerPage/InfluencerPageCreate";
-import { InfluencerPageEdit } from "./influencerPage/InfluencerPageEdit";
-import { InfluencerPageShow } from "./influencerPage/InfluencerPageShow";
 import { FreelanceJobList } from "./freelanceJob/FreelanceJobList";
 import { FreelanceJobCreate } from "./freelanceJob/FreelanceJobCreate";
 import { FreelanceJobEdit } from "./freelanceJob/FreelanceJobEdit";
@@ -105,6 +105,13 @@ const App = (): React.ReactElement => {
           show={BankTransferShow}
         />
         <Resource
+          name="InfluencerPage"
+          list={InfluencerPageList}
+          edit={InfluencerPageEdit}
+          create={InfluencerPageCreate}
+          show={InfluencerPageShow}
+        />
+        <Resource
           name="UserProfile"
           list={UserProfileList}
           edit={UserProfileEdit}
@@ -124,13 +131,6 @@ const App = (): React.ReactElement => {
           edit={MessageEdit}
           create={MessageCreate}
           show={MessageShow}
-        />
-        <Resource
-          name="InfluencerPage"
-          list={InfluencerPageList}
-          edit={InfluencerPageEdit}
-          create={InfluencerPageCreate}
-          show={InfluencerPageShow}
         />
         <Resource
           name="FreelanceJob"

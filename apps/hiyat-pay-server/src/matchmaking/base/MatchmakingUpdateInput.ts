@@ -18,6 +18,7 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  IsBoolean,
   IsEnum,
 } from "class-validator";
 import { EnumMatchmakingRelationshipType } from "./EnumMatchmakingRelationshipType";
@@ -85,6 +86,17 @@ class MatchmakingUpdateInput {
     nullable: true,
   })
   height?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isBlocked?: boolean | null;
 
   @ApiProperty({
     required: false,

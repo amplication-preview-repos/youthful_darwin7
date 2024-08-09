@@ -8,6 +8,7 @@ export type MatchmakingOrderByInput = {
   eyeColor?: SortOrder;
   height?: SortOrder;
   id?: SortOrder;
+  isBlocked?: SortOrder;
   race?: SortOrder;
   relationshipType?: SortOrder;
   state?: SortOrder;

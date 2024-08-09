@@ -15,6 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, IsEnum } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { EnumFreelanceJobPaymentMethod } from "./EnumFreelanceJobPaymentMethod";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
@@ -41,6 +42,17 @@ class FreelanceJobWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  isBlocked?: BooleanNullableFilter;
 
   @ApiProperty({
     required: false,

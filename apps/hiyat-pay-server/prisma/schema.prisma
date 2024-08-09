@@ -39,6 +39,19 @@ model BankTransfer {
   updatedAt    DateTime                @updatedAt
 }
 
+model InfluencerPage {
+  contentUrl  Json?
+  createdAt   DateTime @default(now())
+  description String?
+  followers   Int?
+  gifts       Int?
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked   Boolean?
+  likes       Int?
+  title       String?
+  updatedAt   DateTime @updatedAt
+}
+
 model UserProfile {
   bio               String?
   comments          String?
@@ -81,22 +94,11 @@ model Message {
   updatedAt DateTime  @updatedAt
 }
 
-model InfluencerPage {
-  contentUrl  Json?
-  createdAt   DateTime @default(now())
-  description String?
-  followers   Int?
-  gifts       Int?
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  likes       Int?
-  title       String?
-  updatedAt   DateTime @updatedAt
-}
-
 model FreelanceJob {
   category       String?
   createdAt      DateTime                       @default(now())
   id             String                         @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked      Boolean?
   jobDescription String?
   jobTitle       String?
   paymentMethod  EnumFreelanceJobPaymentMethod?
@@ -113,6 +115,7 @@ model Matchmaking {
   eyeColor         String?
   height           Int?
   id               String                           @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked        Boolean?
   race             String?
   relationshipType EnumMatchmakingRelationshipType?
   state            String?

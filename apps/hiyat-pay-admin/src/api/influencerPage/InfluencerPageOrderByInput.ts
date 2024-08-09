@@ -7,6 +7,7 @@ export type InfluencerPageOrderByInput = {
   followers?: SortOrder;
   gifts?: SortOrder;
   id?: SortOrder;
+  isBlocked?: SortOrder;
   likes?: SortOrder;
   title?: SortOrder;
   updatedAt?: SortOrder;

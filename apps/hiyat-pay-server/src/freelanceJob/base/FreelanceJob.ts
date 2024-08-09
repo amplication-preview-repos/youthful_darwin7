@@ -16,6 +16,7 @@ import {
   MaxLength,
   IsOptional,
   IsDate,
+  IsBoolean,
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -50,6 +51,17 @@ class FreelanceJob {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isBlocked!: boolean | null;
 
   @ApiProperty({
     required: false,

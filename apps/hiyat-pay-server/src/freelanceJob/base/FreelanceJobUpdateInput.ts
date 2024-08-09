@@ -15,6 +15,7 @@ import {
   IsString,
   MaxLength,
   IsOptional,
+  IsBoolean,
   IsEnum,
   IsDate,
 } from "class-validator";
@@ -34,6 +35,17 @@ class FreelanceJobUpdateInput {
     nullable: true,
   })
   category?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isBlocked?: boolean | null;
 
   @ApiProperty({
     required: false,

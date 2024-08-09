@@ -1,10 +1,12 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
   CreateProps,
   NumberInput,
   TextInput,
+  BooleanInput,
   SelectInput,
 } from "react-admin";
 
@@ -17,6 +19,7 @@ export const MatchmakingCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="educationLevel" source="educationLevel" />
         <TextInput label="eyeColor" source="eyeColor" />
         <NumberInput step={1} label="height" source="height" />
+        <BooleanInput label="isBlocked" source="isBlocked" />
         <TextInput label="race" source="race" />
         <SelectInput
           source="relationshipType"

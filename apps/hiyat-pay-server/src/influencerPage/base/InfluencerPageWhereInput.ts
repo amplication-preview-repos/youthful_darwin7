@@ -17,6 +17,7 @@ import { IsOptional } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 
 @InputType()
 class InfluencerPageWhereInput {
@@ -74,6 +75,17 @@ class InfluencerPageWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  isBlocked?: BooleanNullableFilter;
 
   @ApiProperty({
     required: false,

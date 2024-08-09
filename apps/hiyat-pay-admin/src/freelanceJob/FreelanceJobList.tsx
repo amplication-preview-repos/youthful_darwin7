@@ -1,5 +1,12 @@
 import * as React from "react";
-import { List, Datagrid, ListProps, TextField, DateField } from "react-admin";
+import {
+  List,
+  Datagrid,
+  ListProps,
+  TextField,
+  DateField,
+  BooleanField,
+} from "react-admin";
 import Pagination from "../Components/Pagination";
 
 export const FreelanceJobList = (props: ListProps): React.ReactElement => {
@@ -15,6 +22,7 @@ export const FreelanceJobList = (props: ListProps): React.ReactElement => {
         <TextField label="category" source="category" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isBlocked" source="isBlocked" />
         <TextField label="jobDescription" source="jobDescription" />
         <TextField label="jobTitle" source="jobTitle" />
         <TextField label="paymentMethod" source="paymentMethod" />

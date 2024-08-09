@@ -91,6 +91,36 @@
   },
   {
     "role": "user",
+    "resource": "InfluencerPage",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
     "resource": "UserProfile",
     "action": "read:own",
     "attributes": "*"
@@ -176,36 +206,6 @@
   {
     "role": "user",
     "resource": "Message",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
     "action": "read:any",
     "attributes": "*"
   },

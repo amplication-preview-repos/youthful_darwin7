@@ -6,6 +6,7 @@ export type Matchmaking = {
   eyeColor: string | null;
   height: number | null;
   id: string;
+  isBlocked: boolean | null;
   race: string | null;
   relationshipType?: "Option1" | null;
   state: string | null;

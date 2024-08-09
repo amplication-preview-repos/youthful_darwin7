@@ -5,6 +5,7 @@ import {
   ShowProps,
   TextField,
   DateField,
+  BooleanField,
 } from "react-admin";
 
 export const FreelanceJobShow = (props: ShowProps): React.ReactElement => {
@@ -14,6 +15,7 @@ export const FreelanceJobShow = (props: ShowProps): React.ReactElement => {
         <TextField label="category" source="category" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <BooleanField label="isBlocked" source="isBlocked" />
         <TextField label="jobDescription" source="jobDescription" />
         <TextField label="jobTitle" source="jobTitle" />
         <TextField label="paymentMethod" source="paymentMethod" />

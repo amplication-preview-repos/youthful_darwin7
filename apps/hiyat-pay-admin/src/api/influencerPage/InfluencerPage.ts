@@ -7,6 +7,7 @@ export type InfluencerPage = {
   followers: number | null;
   gifts: number | null;
   id: string;
+  isBlocked: boolean | null;
   likes: number | null;
   title: string | null;
   updatedAt: Date;
