@@ -91,66 +91,6 @@
   },
   {
     "role": "user",
-    "resource": "InfluencerPage",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "InfluencerPage",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserProfile",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserProfile",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserProfile",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserProfile",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserProfile",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
     "resource": "Review",
     "action": "read:own",
     "attributes": "*"
@@ -241,6 +181,96 @@
   },
   {
     "role": "user",
+    "resource": "BitcoinTransaction",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "BitcoinTransaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "BitcoinTransaction",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "BitcoinTransaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "BitcoinTransaction",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserProfile",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserProfile",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserProfile",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserProfile",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserProfile",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "InfluencerPage",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
     "resource": "Matchmaking",
     "action": "read:own",
     "attributes": "*"
@@ -301,36 +331,6 @@
   },
   {
     "role": "user",
-    "resource": "BitcoinTransaction",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "BitcoinTransaction",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "BitcoinTransaction",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "BitcoinTransaction",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "BitcoinTransaction",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
     "resource": "User",
     "action": "read:own",
     "attributes": "*"
@@ -386,6 +386,66 @@
   {
     "role": "user",
     "resource": "Filter",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invoice",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invoice",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invoice",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invoice",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invoice",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Transaction",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Transaction",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Transaction",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Transaction",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Transaction",
     "action": "read:any",
     "attributes": "*"
   }

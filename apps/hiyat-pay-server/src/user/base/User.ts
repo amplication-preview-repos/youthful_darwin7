@@ -20,9 +20,11 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Filter } from "../../filter/base/Filter";
+import { Invoice } from "../../invoice/base/Invoice";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { Transaction } from "../../transaction/base/Transaction";
 
 @ObjectType()
 class User {
@@ -76,6 +78,15 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => [Invoice],
+  })
+  @ValidateNested()
+  @Type(() => Invoice)
+  @IsOptional()
+  invoices?: Array<Invoice>;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -92,6 +103,15 @@ class User {
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: JsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Transaction],
+  })
+  @ValidateNested()
+  @Type(() => Transaction)
+  @IsOptional()
+  transactions?: Array<Transaction>;
 
   @ApiProperty({
     required: true,

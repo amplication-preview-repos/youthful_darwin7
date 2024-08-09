@@ -11,25 +11,34 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+
 import {
   IsString,
   MaxLength,
   IsOptional,
+  IsDate,
   IsEnum,
   IsBoolean,
   IsInt,
   Min,
   Max,
 } from "class-validator";
+
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { Type } from "class-transformer";
+import { EnumUserProfileEducationLevel } from "./EnumUserProfileEducationLevel";
 import { EnumUserProfileEmojiSettings } from "./EnumUserProfileEmojiSettings";
 import { EnumUserProfileHeartColor } from "./EnumUserProfileHeartColor";
 import { EnumUserProfileHeartEmojiColor } from "./EnumUserProfileHeartEmojiColor";
 import { EnumUserProfilePrivacy } from "./EnumUserProfilePrivacy";
 import { EnumUserProfileProfilePrivacy } from "./EnumUserProfileProfilePrivacy";
+import { EnumUserProfileRelationshipStatus } from "./EnumUserProfileRelationshipStatus";
+import { EnumUserProfileUserEducationLevel } from "./EnumUserProfileUserEducationLevel";
 import { EnumUserProfileUserEmojiSettings } from "./EnumUserProfileUserEmojiSettings";
+import { EnumUserProfileUserProfilePrivacy } from "./EnumUserProfileUserProfilePrivacy";
+import { EnumUserProfileUserRelationshipStatus } from "./EnumUserProfileUserRelationshipStatus";
 
 @InputType()
 class UserProfileCreateInput {
@@ -66,6 +75,28 @@ class UserProfileCreateInput {
     nullable: true,
   })
   coverPhoto?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateOfBirth?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileEducationLevel,
+  })
+  @IsEnum(EnumUserProfileEducationLevel)
+  @IsOptional()
+  @Field(() => EnumUserProfileEducationLevel, {
+    nullable: true,
+  })
+  educationLevel?: "Option1" | null;
 
   @ApiProperty({
     required: false,
@@ -180,6 +211,17 @@ class UserProfileCreateInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileRelationshipStatus,
+  })
+  @IsEnum(EnumUserProfileRelationshipStatus)
+  @IsOptional()
+  @Field(() => EnumUserProfileRelationshipStatus, {
+    nullable: true,
+  })
+  relationshipStatus?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -192,6 +234,17 @@ class UserProfileCreateInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileUserEducationLevel,
+  })
+  @IsEnum(EnumUserProfileUserEducationLevel)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserEducationLevel, {
+    nullable: true,
+  })
+  userEducationLevel?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
     enum: EnumUserProfileUserEmojiSettings,
   })
   @IsEnum(EnumUserProfileUserEmojiSettings)
@@ -200,6 +253,28 @@ class UserProfileCreateInput {
     nullable: true,
   })
   userEmojiSettings?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserProfilePrivacy,
+  })
+  @IsEnum(EnumUserProfileUserProfilePrivacy)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserProfilePrivacy, {
+    nullable: true,
+  })
+  userProfilePrivacy?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserRelationshipStatus,
+  })
+  @IsEnum(EnumUserProfileUserRelationshipStatus)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserRelationshipStatus, {
+    nullable: true,
+  })
+  userRelationshipStatus?: "Option1" | null;
 
   @ApiProperty({
     required: false,

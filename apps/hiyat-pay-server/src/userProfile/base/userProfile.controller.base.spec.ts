@@ -21,6 +21,7 @@ const CREATE_INPUT = {
   bio: "exampleBio",
   comments: "exampleComments",
   createdAt: new Date(),
+  dateOfBirth: new Date(),
   id: "exampleId",
   isBlocked: "true",
   isSpam: "true",
@@ -34,6 +35,7 @@ const CREATE_RESULT = {
   bio: "exampleBio",
   comments: "exampleComments",
   createdAt: new Date(),
+  dateOfBirth: new Date(),
   id: "exampleId",
   isBlocked: "true",
   isSpam: "true",
@@ -48,6 +50,7 @@ const FIND_MANY_RESULT = [
     bio: "exampleBio",
     comments: "exampleComments",
     createdAt: new Date(),
+    dateOfBirth: new Date(),
     id: "exampleId",
     isBlocked: "true",
     isSpam: "true",
@@ -62,6 +65,7 @@ const FIND_ONE_RESULT = {
   bio: "exampleBio",
   comments: "exampleComments",
   createdAt: new Date(),
+  dateOfBirth: new Date(),
   id: "exampleId",
   isBlocked: "true",
   isSpam: "true",
@@ -155,6 +159,7 @@ describe("UserProfile", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateOfBirth: CREATE_RESULT.dateOfBirth.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -167,6 +172,7 @@ describe("UserProfile", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          dateOfBirth: FIND_MANY_RESULT[0].dateOfBirth.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -190,6 +196,7 @@ describe("UserProfile", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        dateOfBirth: FIND_ONE_RESULT.dateOfBirth.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -203,6 +210,7 @@ describe("UserProfile", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateOfBirth: CREATE_RESULT.dateOfBirth.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {

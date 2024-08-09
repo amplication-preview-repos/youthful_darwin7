@@ -29,6 +29,12 @@ import { UserUpdateInput } from "./UserUpdateInput";
 import { FilterFindManyArgs } from "../../filter/base/FilterFindManyArgs";
 import { Filter } from "../../filter/base/Filter";
 import { FilterWhereUniqueInput } from "../../filter/base/FilterWhereUniqueInput";
+import { InvoiceFindManyArgs } from "../../invoice/base/InvoiceFindManyArgs";
+import { Invoice } from "../../invoice/base/Invoice";
+import { InvoiceWhereUniqueInput } from "../../invoice/base/InvoiceWhereUniqueInput";
+import { TransactionFindManyArgs } from "../../transaction/base/TransactionFindManyArgs";
+import { Transaction } from "../../transaction/base/Transaction";
+import { TransactionWhereUniqueInput } from "../../transaction/base/TransactionWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -307,6 +313,216 @@ export class UserControllerBase {
   ): Promise<void> {
     const data = {
       filters: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/invoices")
+  @ApiNestedQuery(InvoiceFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Invoice",
+    action: "read",
+    possession: "any",
+  })
+  async findInvoices(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Invoice[]> {
+    const query = plainToClass(InvoiceFindManyArgs, request.query);
+    const results = await this.service.findInvoices(params.id, {
+      ...query,
+      select: {
+        amount: true,
+        createdAt: true,
+        dateIssued: true,
+        dueDate: true,
+        id: true,
+        invoiceNumber: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/invoices")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectInvoices(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: InvoiceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      invoices: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/invoices")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateInvoices(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: InvoiceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      invoices: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/invoices")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectInvoices(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: InvoiceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      invoices: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/transactions")
+  @ApiNestedQuery(TransactionFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Transaction",
+    action: "read",
+    possession: "any",
+  })
+  async findTransactions(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Transaction[]> {
+    const query = plainToClass(TransactionFindManyArgs, request.query);
+    const results = await this.service.findTransactions(params.id, {
+      ...query,
+      select: {
+        amount: true,
+        createdAt: true,
+        date: true,
+        id: true,
+        status: true,
+        transactionId: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/transactions")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectTransactions(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactions: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/transactions")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateTransactions(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactions: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/transactions")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectTransactions(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: TransactionWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      transactions: {
         disconnect: body,
       },
     };

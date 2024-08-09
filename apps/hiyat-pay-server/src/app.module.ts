@@ -2,16 +2,18 @@ import { Module } from "@nestjs/common";
 import { SavingsAccountModule } from "./savingsAccount/savingsAccount.module";
 import { P2PTransferModule } from "./p2PTransfer/p2PTransfer.module";
 import { BankTransferModule } from "./bankTransfer/bankTransfer.module";
-import { InfluencerPageModule } from "./influencerPage/influencerPage.module";
-import { UserProfileModule } from "./userProfile/userProfile.module";
 import { ReviewModule } from "./review/review.module";
 import { MessageModule } from "./message/message.module";
 import { FreelanceJobModule } from "./freelanceJob/freelanceJob.module";
+import { BitcoinTransactionModule } from "./bitcoinTransaction/bitcoinTransaction.module";
+import { UserProfileModule } from "./userProfile/userProfile.module";
+import { InfluencerPageModule } from "./influencerPage/influencerPage.module";
 import { MatchmakingModule } from "./matchmaking/matchmaking.module";
 import { FreelanceCategoryModule } from "./freelanceCategory/freelanceCategory.module";
-import { BitcoinTransactionModule } from "./bitcoinTransaction/bitcoinTransaction.module";
 import { UserModule } from "./user/user.module";
 import { FilterModule } from "./filter/filter.module";
+import { InvoiceModule } from "./invoice/invoice.module";
+import { TransactionModule } from "./transaction/transaction.module";
 import { UserSearchModule } from "./usersearch/usersearch.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
@@ -33,16 +35,18 @@ import { AuthModule } from "./auth/auth.module";
     SavingsAccountModule,
     P2PTransferModule,
     BankTransferModule,
-    InfluencerPageModule,
-    UserProfileModule,
     ReviewModule,
     MessageModule,
     FreelanceJobModule,
+    BitcoinTransactionModule,
+    UserProfileModule,
+    InfluencerPageModule,
     MatchmakingModule,
     FreelanceCategoryModule,
-    BitcoinTransactionModule,
     UserModule,
     FilterModule,
+    InvoiceModule,
+    TransactionModule,
     UserSearchModule,
     HealthModule,
     PrismaModule,

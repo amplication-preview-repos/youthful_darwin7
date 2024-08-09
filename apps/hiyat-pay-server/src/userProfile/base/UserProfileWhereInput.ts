@@ -15,6 +15,8 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, IsEnum } from "class-validator";
 import { JsonFilter } from "../../util/JsonFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { EnumUserProfileEducationLevel } from "./EnumUserProfileEducationLevel";
 import { EnumUserProfileEmojiSettings } from "./EnumUserProfileEmojiSettings";
 import { EnumUserProfileHeartColor } from "./EnumUserProfileHeartColor";
 import { EnumUserProfileHeartEmojiColor } from "./EnumUserProfileHeartEmojiColor";
@@ -23,7 +25,11 @@ import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumUserProfilePrivacy } from "./EnumUserProfilePrivacy";
 import { EnumUserProfileProfilePrivacy } from "./EnumUserProfileProfilePrivacy";
+import { EnumUserProfileRelationshipStatus } from "./EnumUserProfileRelationshipStatus";
+import { EnumUserProfileUserEducationLevel } from "./EnumUserProfileUserEducationLevel";
 import { EnumUserProfileUserEmojiSettings } from "./EnumUserProfileUserEmojiSettings";
+import { EnumUserProfileUserProfilePrivacy } from "./EnumUserProfileUserProfilePrivacy";
+import { EnumUserProfileUserRelationshipStatus } from "./EnumUserProfileUserRelationshipStatus";
 
 @InputType()
 class UserProfileWhereInput {
@@ -59,6 +65,28 @@ class UserProfileWhereInput {
     nullable: true,
   })
   coverPhoto?: JsonFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  dateOfBirth?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileEducationLevel,
+  })
+  @IsEnum(EnumUserProfileEducationLevel)
+  @IsOptional()
+  @Field(() => EnumUserProfileEducationLevel, {
+    nullable: true,
+  })
+  educationLevel?: "Option1";
 
   @ApiProperty({
     required: false,
@@ -183,6 +211,17 @@ class UserProfileWhereInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileRelationshipStatus,
+  })
+  @IsEnum(EnumUserProfileRelationshipStatus)
+  @IsOptional()
+  @Field(() => EnumUserProfileRelationshipStatus, {
+    nullable: true,
+  })
+  relationshipStatus?: "Option1";
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -194,6 +233,17 @@ class UserProfileWhereInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileUserEducationLevel,
+  })
+  @IsEnum(EnumUserProfileUserEducationLevel)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserEducationLevel, {
+    nullable: true,
+  })
+  userEducationLevel?: "Option1";
+
+  @ApiProperty({
+    required: false,
     enum: EnumUserProfileUserEmojiSettings,
   })
   @IsEnum(EnumUserProfileUserEmojiSettings)
@@ -202,6 +252,28 @@ class UserProfileWhereInput {
     nullable: true,
   })
   userEmojiSettings?: "Option1";
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserProfilePrivacy,
+  })
+  @IsEnum(EnumUserProfileUserProfilePrivacy)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserProfilePrivacy, {
+    nullable: true,
+  })
+  userProfilePrivacy?: "Option1";
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserRelationshipStatus,
+  })
+  @IsEnum(EnumUserProfileUserRelationshipStatus)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserRelationshipStatus, {
+    nullable: true,
+  })
+  userRelationshipStatus?: "Option1";
 
   @ApiProperty({
     required: false,

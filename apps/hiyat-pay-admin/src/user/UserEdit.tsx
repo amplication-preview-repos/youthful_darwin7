@@ -11,6 +11,8 @@ import {
 } from "react-admin";
 
 import { FilterTitle } from "../filter/FilterTitle";
+import { InvoiceTitle } from "../invoice/InvoiceTitle";
+import { TransactionTitle } from "../transaction/TransactionTitle";
 import { ROLES_OPTIONS } from "../user/RolesOptions";
 
 export const UserEdit = (props: EditProps): React.ReactElement => {
@@ -27,6 +29,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           <SelectArrayInput optionText={FilterTitle} />
         </ReferenceArrayInput>
         <TextInput label="First Name" source="firstName" />
+        <ReferenceArrayInput
+          source="invoices"
+          reference="Invoice"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={InvoiceTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Last Name" source="lastName" />
         <PasswordInput label="Password" source="password" />
         <SelectArrayInput
@@ -35,6 +45,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <ReferenceArrayInput
+          source="transactions"
+          reference="Transaction"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={TransactionTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Username" source="username" />
       </SimpleForm>
     </Edit>

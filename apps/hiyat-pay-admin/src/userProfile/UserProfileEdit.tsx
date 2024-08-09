@@ -5,6 +5,7 @@ import {
   SimpleForm,
   EditProps,
   TextInput,
+  DateTimeInput,
   SelectInput,
   BooleanInput,
   NumberInput,
@@ -17,6 +18,15 @@ export const UserProfileEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="bio" multiline source="bio" />
         <TextInput label="comments" multiline source="comments" />
         <div />
+        <DateTimeInput label="dateOfBirth" source="dateOfBirth" />
+        <SelectInput
+          source="educationLevel"
+          label="educationLevel"
+          choices={[{ label: "Option 1", value: "Option1" }]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <SelectInput
           source="emojiSettings"
           label="emojiSettings"
@@ -62,10 +72,42 @@ export const UserProfileEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
+        <SelectInput
+          source="relationshipStatus"
+          label="relationshipStatus"
+          choices={[{ label: "Option 1", value: "Option1" }]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <TextInput label="tagName" source="tagName" />
+        <SelectInput
+          source="userEducationLevel"
+          label="userEducationLevel"
+          choices={[{ label: "Option 1", value: "Option1" }]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
         <SelectInput
           source="userEmojiSettings"
           label="userEmojiSettings"
+          choices={[{ label: "Option 1", value: "Option1" }]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
+        <SelectInput
+          source="userProfilePrivacy"
+          label="userProfilePrivacy"
+          choices={[{ label: "Option 1", value: "Option1" }]}
+          optionText="label"
+          allowEmpty
+          optionValue="value"
+        />
+        <SelectInput
+          source="userRelationshipStatus"
+          label="userRelationshipStatus"
           choices={[{ label: "Option 1", value: "Option1" }]}
           optionText="label"
           allowEmpty

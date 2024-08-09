@@ -23,6 +23,8 @@ export const UserProfileList = (props: ListProps): React.ReactElement => {
         <TextField label="comments" source="comments" />
         <TextField label="coverPhoto" source="coverPhoto" />
         <DateField source="createdAt" label="Created At" />
+        <TextField label="dateOfBirth" source="dateOfBirth" />
+        <TextField label="educationLevel" source="educationLevel" />
         <TextField label="emojiSettings" source="emojiSettings" />
         <TextField label="heartColor" source="heartColor" />
         <TextField label="heartEmojiColor" source="heartEmojiColor" />
@@ -34,9 +36,16 @@ export const UserProfileList = (props: ListProps): React.ReactElement => {
         <TextField label="privacy" source="privacy" />
         <TextField label="profilePicture" source="profilePicture" />
         <TextField label="profilePrivacy" source="profilePrivacy" />
+        <TextField label="relationshipStatus" source="relationshipStatus" />
         <TextField label="tagName" source="tagName" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="userEducationLevel" source="userEducationLevel" />
         <TextField label="userEmojiSettings" source="userEmojiSettings" />
+        <TextField label="userProfilePrivacy" source="userProfilePrivacy" />
+        <TextField
+          label="userRelationshipStatus"
+          source="userRelationshipStatus"
+        />
         <TextField label="username" source="username" />
       </Datagrid>
     </List>

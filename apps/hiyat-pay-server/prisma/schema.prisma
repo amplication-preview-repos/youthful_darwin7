@@ -39,41 +39,6 @@ model BankTransfer {
   updatedAt    DateTime                @updatedAt
 }
 
-model InfluencerPage {
-  contentUrl  Json?
-  createdAt   DateTime @default(now())
-  description String?
-  followers   Int?
-  gifts       Int?
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  isBlocked   Boolean?
-  likes       Int?
-  title       String?
-  updatedAt   DateTime @updatedAt
-}
-
-model UserProfile {
-  bio               String?
-  comments          String?
-  coverPhoto        Json?
-  createdAt         DateTime                          @default(now())
-  emojiSettings     EnumUserProfileEmojiSettings?
-  heartColor        EnumUserProfileHeartColor?
-  heartEmojiColor   EnumUserProfileHeartEmojiColor?
-  id                String                            @id @default(auto()) @map("_id") @db.ObjectId
-  isBlocked         Boolean?
-  isSpam            Boolean?
-  likes             Int?
-  messageRequests   Boolean?
-  privacy           EnumUserProfilePrivacy?
-  profilePicture    Json?
-  profilePrivacy    EnumUserProfileProfilePrivacy?
-  tagName           String?
-  updatedAt         DateTime                          @updatedAt
-  userEmojiSettings EnumUserProfileUserEmojiSettings?
-  username          String?
-}
-
 model Review {
   comment    String?
   createdAt  DateTime  @default(now())
@@ -107,6 +72,57 @@ model FreelanceJob {
   user           String?
 }
 
+model BitcoinTransaction {
+  bitcoinAmount   Float?
+  createdAt       DateTime                               @default(now())
+  date            DateTime?
+  id              String                                 @id @default(auto()) @map("_id") @db.ObjectId
+  transactionType EnumBitcoinTransactionTransactionType?
+  updatedAt       DateTime                               @updatedAt
+  user            String?
+}
+
+model UserProfile {
+  bio                    String?
+  comments               String?
+  coverPhoto             Json?
+  createdAt              DateTime                               @default(now())
+  dateOfBirth            DateTime?
+  educationLevel         EnumUserProfileEducationLevel?
+  emojiSettings          EnumUserProfileEmojiSettings?
+  heartColor             EnumUserProfileHeartColor?
+  heartEmojiColor        EnumUserProfileHeartEmojiColor?
+  id                     String                                 @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked              Boolean?
+  isSpam                 Boolean?
+  likes                  Int?
+  messageRequests        Boolean?
+  privacy                EnumUserProfilePrivacy?
+  profilePicture         Json?
+  profilePrivacy         EnumUserProfileProfilePrivacy?
+  relationshipStatus     EnumUserProfileRelationshipStatus?
+  tagName                String?
+  updatedAt              DateTime                               @updatedAt
+  userEducationLevel     EnumUserProfileUserEducationLevel?
+  userEmojiSettings      EnumUserProfileUserEmojiSettings?
+  userProfilePrivacy     EnumUserProfileUserProfilePrivacy?
+  userRelationshipStatus EnumUserProfileUserRelationshipStatus?
+  username               String?
+}
+
+model InfluencerPage {
+  contentUrl  Json?
+  createdAt   DateTime @default(now())
+  description String?
+  followers   Int?
+  gifts       Int?
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked   Boolean?
+  likes       Int?
+  title       String?
+  updatedAt   DateTime @updatedAt
+}
+
 model Matchmaking {
   age              Int?
   city             String?
@@ -133,27 +149,19 @@ model FreelanceCategory {
   updatedAt    DateTime @updatedAt
 }
 
-model BitcoinTransaction {
-  bitcoinAmount   Float?
-  createdAt       DateTime                               @default(now())
-  date            DateTime?
-  id              String                                 @id @default(auto()) @map("_id") @db.ObjectId
-  transactionType EnumBitcoinTransactionTransactionType?
-  updatedAt       DateTime                               @updatedAt
-  user            String?
-}
-
 model User {
-  createdAt DateTime @default(now())
-  email     String?  @unique
-  filters   Filter[]
-  firstName String?
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  lastName  String?
-  password  String
-  roles     Json
-  updatedAt DateTime @updatedAt
-  username  String   @unique
+  createdAt    DateTime      @default(now())
+  email        String?       @unique
+  filters      Filter[]
+  firstName    String?
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  invoices     Invoice[]
+  lastName     String?
+  password     String
+  roles        Json
+  transactions Transaction[]
+  updatedAt    DateTime      @updatedAt
+  username     String        @unique
 }
 
 model Filter {
@@ -171,11 +179,47 @@ model Filter {
   userProfileColor     EnumFilterUserProfileColor?
 }
 
+model Invoice {
+  amount        Float?
+  createdAt     DateTime  @default(now())
+  dateIssued    DateTime?
+  dueDate       DateTime?
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  invoiceNumber String?
+  updatedAt     DateTime  @updatedAt
+  user          User?     @relation(fields: [userId], references: [id])
+  userId        String?   @db.ObjectId
+}
+
+model Transaction {
+  amount        Float?
+  createdAt     DateTime               @default(now())
+  date          DateTime?
+  id            String                 @id @default(auto()) @map("_id") @db.ObjectId
+  status        EnumTransactionStatus?
+  transactionId String?
+  updatedAt     DateTime               @updatedAt
+  user          User?                  @relation(fields: [userId], references: [id])
+  userId        String?                @db.ObjectId
+}
+
 enum EnumP2PTransferStatus {
   Option1
 }
 
 enum EnumBankTransferStatus {
+  Option1
+}
+
+enum EnumFreelanceJobPaymentMethod {
+  Option1
+}
+
+enum EnumBitcoinTransactionTransactionType {
+  Option1
+}
+
+enum EnumUserProfileEducationLevel {
   Option1
 }
 
@@ -199,19 +243,27 @@ enum EnumUserProfileProfilePrivacy {
   Option1
 }
 
+enum EnumUserProfileRelationshipStatus {
+  Option1
+}
+
+enum EnumUserProfileUserEducationLevel {
+  Option1
+}
+
 enum EnumUserProfileUserEmojiSettings {
   Option1
 }
 
-enum EnumFreelanceJobPaymentMethod {
+enum EnumUserProfileUserProfilePrivacy {
+  Option1
+}
+
+enum EnumUserProfileUserRelationshipStatus {
   Option1
 }
 
 enum EnumMatchmakingRelationshipType {
-  Option1
-}
-
-enum EnumBitcoinTransactionTransactionType {
   Option1
 }
 
@@ -228,5 +280,9 @@ enum EnumFilterProfileColor {
 }
 
 enum EnumFilterUserProfileColor {
+  Option1
+}
+
+enum EnumTransactionStatus {
   Option1
 }

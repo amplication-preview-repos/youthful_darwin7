@@ -45,6 +45,42 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="userProfileColor" source="userProfileColor" />
           </Datagrid>
         </ReferenceManyField>
+        <ReferenceManyField
+          reference="Invoice"
+          target="userId"
+          label="Invoices"
+        >
+          <Datagrid rowClick="show">
+            <TextField label="amount" source="amount" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="dateIssued" source="dateIssued" />
+            <TextField label="dueDate" source="dueDate" />
+            <TextField label="ID" source="id" />
+            <TextField label="invoiceNumber" source="invoiceNumber" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="user" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField
+          reference="Transaction"
+          target="userId"
+          label="Transactions"
+        >
+          <Datagrid rowClick="show">
+            <TextField label="amount" source="amount" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="date" source="date" />
+            <TextField label="ID" source="id" />
+            <TextField label="status" source="status" />
+            <TextField label="transactionId" source="transactionId" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="user" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
+          </Datagrid>
+        </ReferenceManyField>
       </SimpleShowLayout>
     </Show>
   );

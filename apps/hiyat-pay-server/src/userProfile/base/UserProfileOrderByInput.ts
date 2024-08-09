@@ -72,6 +72,28 @@ class UserProfileOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  dateOfBirth?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  educationLevel?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   emojiSettings?: SortOrder;
 
   @ApiProperty({
@@ -193,6 +215,17 @@ class UserProfileOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  relationshipStatus?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   tagName?: SortOrder;
 
   @ApiProperty({
@@ -215,7 +248,40 @@ class UserProfileOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  userEducationLevel?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   userEmojiSettings?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  userProfilePrivacy?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  userRelationshipStatus?: SortOrder;
 
   @ApiProperty({
     required: false,

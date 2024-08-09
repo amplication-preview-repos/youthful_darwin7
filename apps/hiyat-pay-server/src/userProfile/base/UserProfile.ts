@@ -28,12 +28,17 @@ import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { Type } from "class-transformer";
+import { EnumUserProfileEducationLevel } from "./EnumUserProfileEducationLevel";
 import { EnumUserProfileEmojiSettings } from "./EnumUserProfileEmojiSettings";
 import { EnumUserProfileHeartColor } from "./EnumUserProfileHeartColor";
 import { EnumUserProfileHeartEmojiColor } from "./EnumUserProfileHeartEmojiColor";
 import { EnumUserProfilePrivacy } from "./EnumUserProfilePrivacy";
 import { EnumUserProfileProfilePrivacy } from "./EnumUserProfileProfilePrivacy";
+import { EnumUserProfileRelationshipStatus } from "./EnumUserProfileRelationshipStatus";
+import { EnumUserProfileUserEducationLevel } from "./EnumUserProfileUserEducationLevel";
 import { EnumUserProfileUserEmojiSettings } from "./EnumUserProfileUserEmojiSettings";
+import { EnumUserProfileUserProfilePrivacy } from "./EnumUserProfileUserProfilePrivacy";
+import { EnumUserProfileUserRelationshipStatus } from "./EnumUserProfileUserRelationshipStatus";
 
 @ObjectType()
 class UserProfile {
@@ -78,6 +83,28 @@ class UserProfile {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateOfBirth!: Date | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileEducationLevel,
+  })
+  @IsEnum(EnumUserProfileEducationLevel)
+  @IsOptional()
+  @Field(() => EnumUserProfileEducationLevel, {
+    nullable: true,
+  })
+  educationLevel?: "Option1" | null;
 
   @ApiProperty({
     required: false,
@@ -200,6 +227,17 @@ class UserProfile {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileRelationshipStatus,
+  })
+  @IsEnum(EnumUserProfileRelationshipStatus)
+  @IsOptional()
+  @Field(() => EnumUserProfileRelationshipStatus, {
+    nullable: true,
+  })
+  relationshipStatus?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -220,6 +258,17 @@ class UserProfile {
 
   @ApiProperty({
     required: false,
+    enum: EnumUserProfileUserEducationLevel,
+  })
+  @IsEnum(EnumUserProfileUserEducationLevel)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserEducationLevel, {
+    nullable: true,
+  })
+  userEducationLevel?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
     enum: EnumUserProfileUserEmojiSettings,
   })
   @IsEnum(EnumUserProfileUserEmojiSettings)
@@ -228,6 +277,28 @@ class UserProfile {
     nullable: true,
   })
   userEmojiSettings?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserProfilePrivacy,
+  })
+  @IsEnum(EnumUserProfileUserProfilePrivacy)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserProfilePrivacy, {
+    nullable: true,
+  })
+  userProfilePrivacy?: "Option1" | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumUserProfileUserRelationshipStatus,
+  })
+  @IsEnum(EnumUserProfileUserRelationshipStatus)
+  @IsOptional()
+  @Field(() => EnumUserProfileUserRelationshipStatus, {
+    nullable: true,
+  })
+  userRelationshipStatus?: "Option1" | null;
 
   @ApiProperty({
     required: false,

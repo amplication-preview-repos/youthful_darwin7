@@ -19,9 +19,11 @@ import {
 } from "class-validator";
 import { FilterUpdateManyWithoutUsersInput } from "./FilterUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
+import { InvoiceUpdateManyWithoutUsersInput } from "./InvoiceUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
+import { TransactionUpdateManyWithoutUsersInput } from "./TransactionUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
@@ -62,6 +64,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => InvoiceUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => InvoiceUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => InvoiceUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  invoices?: InvoiceUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -92,6 +106,18 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: InputJsonValue;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => TransactionUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => TransactionUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  transactions?: TransactionUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

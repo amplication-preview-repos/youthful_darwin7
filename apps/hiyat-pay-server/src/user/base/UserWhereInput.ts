@@ -16,6 +16,8 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { FilterListRelationFilter } from "../../filter/base/FilterListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { InvoiceListRelationFilter } from "../../invoice/base/InvoiceListRelationFilter";
+import { TransactionListRelationFilter } from "../../transaction/base/TransactionListRelationFilter";
 
 @InputType()
 class UserWhereInput {
@@ -66,6 +68,18 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => InvoiceListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => InvoiceListRelationFilter)
+  @IsOptional()
+  @Field(() => InvoiceListRelationFilter, {
+    nullable: true,
+  })
+  invoices?: InvoiceListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -74,6 +88,18 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => TransactionListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => TransactionListRelationFilter)
+  @IsOptional()
+  @Field(() => TransactionListRelationFilter, {
+    nullable: true,
+  })
+  transactions?: TransactionListRelationFilter;
 
   @ApiProperty({
     required: false,

@@ -17,14 +17,6 @@ import { BankTransferList } from "./bankTransfer/BankTransferList";
 import { BankTransferCreate } from "./bankTransfer/BankTransferCreate";
 import { BankTransferEdit } from "./bankTransfer/BankTransferEdit";
 import { BankTransferShow } from "./bankTransfer/BankTransferShow";
-import { InfluencerPageList } from "./influencerPage/InfluencerPageList";
-import { InfluencerPageCreate } from "./influencerPage/InfluencerPageCreate";
-import { InfluencerPageEdit } from "./influencerPage/InfluencerPageEdit";
-import { InfluencerPageShow } from "./influencerPage/InfluencerPageShow";
-import { UserProfileList } from "./userProfile/UserProfileList";
-import { UserProfileCreate } from "./userProfile/UserProfileCreate";
-import { UserProfileEdit } from "./userProfile/UserProfileEdit";
-import { UserProfileShow } from "./userProfile/UserProfileShow";
 import { ReviewList } from "./review/ReviewList";
 import { ReviewCreate } from "./review/ReviewCreate";
 import { ReviewEdit } from "./review/ReviewEdit";
@@ -37,6 +29,18 @@ import { FreelanceJobList } from "./freelanceJob/FreelanceJobList";
 import { FreelanceJobCreate } from "./freelanceJob/FreelanceJobCreate";
 import { FreelanceJobEdit } from "./freelanceJob/FreelanceJobEdit";
 import { FreelanceJobShow } from "./freelanceJob/FreelanceJobShow";
+import { BitcoinTransactionList } from "./bitcoinTransaction/BitcoinTransactionList";
+import { BitcoinTransactionCreate } from "./bitcoinTransaction/BitcoinTransactionCreate";
+import { BitcoinTransactionEdit } from "./bitcoinTransaction/BitcoinTransactionEdit";
+import { BitcoinTransactionShow } from "./bitcoinTransaction/BitcoinTransactionShow";
+import { UserProfileList } from "./userProfile/UserProfileList";
+import { UserProfileCreate } from "./userProfile/UserProfileCreate";
+import { UserProfileEdit } from "./userProfile/UserProfileEdit";
+import { UserProfileShow } from "./userProfile/UserProfileShow";
+import { InfluencerPageList } from "./influencerPage/InfluencerPageList";
+import { InfluencerPageCreate } from "./influencerPage/InfluencerPageCreate";
+import { InfluencerPageEdit } from "./influencerPage/InfluencerPageEdit";
+import { InfluencerPageShow } from "./influencerPage/InfluencerPageShow";
 import { MatchmakingList } from "./matchmaking/MatchmakingList";
 import { MatchmakingCreate } from "./matchmaking/MatchmakingCreate";
 import { MatchmakingEdit } from "./matchmaking/MatchmakingEdit";
@@ -45,10 +49,6 @@ import { FreelanceCategoryList } from "./freelanceCategory/FreelanceCategoryList
 import { FreelanceCategoryCreate } from "./freelanceCategory/FreelanceCategoryCreate";
 import { FreelanceCategoryEdit } from "./freelanceCategory/FreelanceCategoryEdit";
 import { FreelanceCategoryShow } from "./freelanceCategory/FreelanceCategoryShow";
-import { BitcoinTransactionList } from "./bitcoinTransaction/BitcoinTransactionList";
-import { BitcoinTransactionCreate } from "./bitcoinTransaction/BitcoinTransactionCreate";
-import { BitcoinTransactionEdit } from "./bitcoinTransaction/BitcoinTransactionEdit";
-import { BitcoinTransactionShow } from "./bitcoinTransaction/BitcoinTransactionShow";
 import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
@@ -57,6 +57,14 @@ import { FilterList } from "./filter/FilterList";
 import { FilterCreate } from "./filter/FilterCreate";
 import { FilterEdit } from "./filter/FilterEdit";
 import { FilterShow } from "./filter/FilterShow";
+import { InvoiceList } from "./invoice/InvoiceList";
+import { InvoiceCreate } from "./invoice/InvoiceCreate";
+import { InvoiceEdit } from "./invoice/InvoiceEdit";
+import { InvoiceShow } from "./invoice/InvoiceShow";
+import { TransactionList } from "./transaction/TransactionList";
+import { TransactionCreate } from "./transaction/TransactionCreate";
+import { TransactionEdit } from "./transaction/TransactionEdit";
+import { TransactionShow } from "./transaction/TransactionShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -105,20 +113,6 @@ const App = (): React.ReactElement => {
           show={BankTransferShow}
         />
         <Resource
-          name="InfluencerPage"
-          list={InfluencerPageList}
-          edit={InfluencerPageEdit}
-          create={InfluencerPageCreate}
-          show={InfluencerPageShow}
-        />
-        <Resource
-          name="UserProfile"
-          list={UserProfileList}
-          edit={UserProfileEdit}
-          create={UserProfileCreate}
-          show={UserProfileShow}
-        />
-        <Resource
           name="Review"
           list={ReviewList}
           edit={ReviewEdit}
@@ -140,6 +134,27 @@ const App = (): React.ReactElement => {
           show={FreelanceJobShow}
         />
         <Resource
+          name="BitcoinTransaction"
+          list={BitcoinTransactionList}
+          edit={BitcoinTransactionEdit}
+          create={BitcoinTransactionCreate}
+          show={BitcoinTransactionShow}
+        />
+        <Resource
+          name="UserProfile"
+          list={UserProfileList}
+          edit={UserProfileEdit}
+          create={UserProfileCreate}
+          show={UserProfileShow}
+        />
+        <Resource
+          name="InfluencerPage"
+          list={InfluencerPageList}
+          edit={InfluencerPageEdit}
+          create={InfluencerPageCreate}
+          show={InfluencerPageShow}
+        />
+        <Resource
           name="Matchmaking"
           list={MatchmakingList}
           edit={MatchmakingEdit}
@@ -154,13 +169,6 @@ const App = (): React.ReactElement => {
           show={FreelanceCategoryShow}
         />
         <Resource
-          name="BitcoinTransaction"
-          list={BitcoinTransactionList}
-          edit={BitcoinTransactionEdit}
-          create={BitcoinTransactionCreate}
-          show={BitcoinTransactionShow}
-        />
-        <Resource
           name="User"
           list={UserList}
           edit={UserEdit}
@@ -173,6 +181,20 @@ const App = (): React.ReactElement => {
           edit={FilterEdit}
           create={FilterCreate}
           show={FilterShow}
+        />
+        <Resource
+          name="Invoice"
+          list={InvoiceList}
+          edit={InvoiceEdit}
+          create={InvoiceCreate}
+          show={InvoiceShow}
+        />
+        <Resource
+          name="Transaction"
+          list={TransactionList}
+          edit={TransactionEdit}
+          create={TransactionCreate}
+          show={TransactionShow}
         />
       </Admin>
     </div>
