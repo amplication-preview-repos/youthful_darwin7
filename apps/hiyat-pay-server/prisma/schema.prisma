@@ -1,0 +1,161 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SavingsAccount {
+  balance      Float?
+  createdAt    DateTime  @default(now())
+  dateOpened   DateTime?
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  rainyDayFund Float?
+  updatedAt    DateTime  @updatedAt
+  user         String?
+}
+
+model P2PTransfer {
+  amount    Float?
+  createdAt DateTime               @default(now())
+  date      DateTime?
+  id        String                 @id @default(auto()) @map("_id") @db.ObjectId
+  receiver  String?
+  sender    String?
+  status    EnumP2PTransferStatus?
+  updatedAt DateTime               @updatedAt
+}
+
+model BankTransfer {
+  amount       Float?
+  createdAt    DateTime                @default(now())
+  date         DateTime?
+  id           String                  @id @default(auto()) @map("_id") @db.ObjectId
+  receiverBank String?
+  senderBank   String?
+  status       EnumBankTransferStatus?
+  updatedAt    DateTime                @updatedAt
+}
+
+model Review {
+  comment    String?
+  createdAt  DateTime  @default(now())
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  postedDate DateTime?
+  rating     Int?
+  updatedAt  DateTime  @updatedAt
+  user       String?
+}
+
+model Message {
+  content   String?
+  createdAt DateTime  @default(now())
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  receiver  String?
+  sender    String?
+  timestamp DateTime?
+  updatedAt DateTime  @updatedAt
+}
+
+model InfluencerPage {
+  contentUrl  Json?
+  createdAt   DateTime @default(now())
+  description String?
+  followers   Int?
+  gifts       Int?
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  likes       Int?
+  title       String?
+  updatedAt   DateTime @updatedAt
+}
+
+model FreelanceJob {
+  category       String?
+  createdAt      DateTime                       @default(now())
+  id             String                         @id @default(auto()) @map("_id") @db.ObjectId
+  jobDescription String?
+  jobTitle       String?
+  paymentMethod  EnumFreelanceJobPaymentMethod?
+  postedDate     DateTime?
+  updatedAt      DateTime                       @updatedAt
+  user           String?
+}
+
+model Matchmaking {
+  age              Int?
+  city             String?
+  createdAt        DateTime                         @default(now())
+  educationLevel   String?
+  eyeColor         String?
+  height           Int?
+  id               String                           @id @default(auto()) @map("_id") @db.ObjectId
+  race             String?
+  relationshipType EnumMatchmakingRelationshipType?
+  state            String?
+  updatedAt        DateTime                         @updatedAt
+  user             String?
+  weight           Int?
+  zipCode          String?
+}
+
+model FreelanceCategory {
+  categoryName String?
+  createdAt    DateTime @default(now())
+  description  String?
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt    DateTime @updatedAt
+}
+
+model BitcoinTransaction {
+  bitcoinAmount   Float?
+  createdAt       DateTime                               @default(now())
+  date            DateTime?
+  id              String                                 @id @default(auto()) @map("_id") @db.ObjectId
+  transactionType EnumBitcoinTransactionTransactionType?
+  updatedAt       DateTime                               @updatedAt
+  user            String?
+}
+
+model UserProfile {
+  bio            String?
+  coverPhoto     Json?
+  createdAt      DateTime @default(now())
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  profilePicture Json?
+  updatedAt      DateTime @updatedAt
+  username       String?
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+enum EnumP2PTransferStatus {
+  Option1
+}
+
+enum EnumBankTransferStatus {
+  Option1
+}
+
+enum EnumFreelanceJobPaymentMethod {
+  Option1
+}
+
+enum EnumMatchmakingRelationshipType {
+  Option1
+}
+
+enum EnumBitcoinTransactionTransactionType {
+  Option1
+}
