@@ -1,0 +1,288 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SavingsAccount {
+  balance      Float?
+  createdAt    DateTime  @default(now())
+  dateOpened   DateTime?
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  rainyDayFund Float?
+  updatedAt    DateTime  @updatedAt
+  user         String?
+}
+
+model P2PTransfer {
+  amount    Float?
+  createdAt DateTime               @default(now())
+  date      DateTime?
+  id        String                 @id @default(auto()) @map("_id") @db.ObjectId
+  receiver  String?
+  sender    String?
+  status    EnumP2PTransferStatus?
+  updatedAt DateTime               @updatedAt
+}
+
+model BankTransfer {
+  amount       Float?
+  createdAt    DateTime                @default(now())
+  date         DateTime?
+  id           String                  @id @default(auto()) @map("_id") @db.ObjectId
+  receiverBank String?
+  senderBank   String?
+  status       EnumBankTransferStatus?
+  updatedAt    DateTime                @updatedAt
+}
+
+model Review {
+  comment    String?
+  createdAt  DateTime  @default(now())
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  postedDate DateTime?
+  rating     Int?
+  updatedAt  DateTime  @updatedAt
+  user       String?
+}
+
+model Message {
+  content   String?
+  createdAt DateTime  @default(now())
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  receiver  String?
+  sender    String?
+  timestamp DateTime?
+  updatedAt DateTime  @updatedAt
+}
+
+model FreelanceJob {
+  category       String?
+  createdAt      DateTime                       @default(now())
+  id             String                         @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked      Boolean?
+  jobDescription String?
+  jobTitle       String?
+  paymentMethod  EnumFreelanceJobPaymentMethod?
+  postedDate     DateTime?
+  updatedAt      DateTime                       @updatedAt
+  user           String?
+}
+
+model BitcoinTransaction {
+  bitcoinAmount   Float?
+  createdAt       DateTime                               @default(now())
+  date            DateTime?
+  id              String                                 @id @default(auto()) @map("_id") @db.ObjectId
+  transactionType EnumBitcoinTransactionTransactionType?
+  updatedAt       DateTime                               @updatedAt
+  user            String?
+}
+
+model UserProfile {
+  bio                    String?
+  comments               String?
+  coverPhoto             Json?
+  createdAt              DateTime                               @default(now())
+  dateOfBirth            DateTime?
+  educationLevel         EnumUserProfileEducationLevel?
+  emojiSettings          EnumUserProfileEmojiSettings?
+  heartColor             EnumUserProfileHeartColor?
+  heartEmojiColor        EnumUserProfileHeartEmojiColor?
+  id                     String                                 @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked              Boolean?
+  isSpam                 Boolean?
+  likes                  Int?
+  messageRequests        Boolean?
+  privacy                EnumUserProfilePrivacy?
+  profilePicture         Json?
+  profilePrivacy         EnumUserProfileProfilePrivacy?
+  relationshipStatus     EnumUserProfileRelationshipStatus?
+  tagName                String?
+  updatedAt              DateTime                               @updatedAt
+  userEducationLevel     EnumUserProfileUserEducationLevel?
+  userEmojiSettings      EnumUserProfileUserEmojiSettings?
+  userProfilePrivacy     EnumUserProfileUserProfilePrivacy?
+  userRelationshipStatus EnumUserProfileUserRelationshipStatus?
+  username               String?
+}
+
+model InfluencerPage {
+  contentUrl  Json?
+  createdAt   DateTime @default(now())
+  description String?
+  followers   Int?
+  gifts       Int?
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked   Boolean?
+  likes       Int?
+  title       String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Matchmaking {
+  age              Int?
+  city             String?
+  createdAt        DateTime                         @default(now())
+  educationLevel   String?
+  eyeColor         String?
+  height           Int?
+  id               String                           @id @default(auto()) @map("_id") @db.ObjectId
+  isBlocked        Boolean?
+  race             String?
+  relationshipType EnumMatchmakingRelationshipType?
+  state            String?
+  updatedAt        DateTime                         @updatedAt
+  user             String?
+  weight           Int?
+  zipCode          String?
+}
+
+model FreelanceCategory {
+  categoryName String?
+  createdAt    DateTime @default(now())
+  description  String?
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt    DateTime @updatedAt
+}
+
+model User {
+  createdAt    DateTime      @default(now())
+  email        String?       @unique
+  filters      Filter[]
+  firstName    String?
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  invoices     Invoice[]
+  lastName     String?
+  password     String
+  roles        Json
+  transactions Transaction[]
+  updatedAt    DateTime      @updatedAt
+  username     String        @unique
+}
+
+model Filter {
+  avatar               Json?
+  createdAt            DateTime                        @default(now())
+  emoji                Json?
+  id                   String                          @id @default(auto()) @map("_id") @db.ObjectId
+  photo                Json?
+  photoDuration        EnumFilterPhotoDuration?
+  photoSharingDuration EnumFilterPhotoSharingDuration?
+  profileColor         EnumFilterProfileColor?
+  updatedAt            DateTime                        @updatedAt
+  user                 User?                           @relation(fields: [userId], references: [id])
+  userId               String?                         @db.ObjectId
+  userProfileColor     EnumFilterUserProfileColor?
+}
+
+model Invoice {
+  amount        Float?
+  createdAt     DateTime  @default(now())
+  dateIssued    DateTime?
+  dueDate       DateTime?
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  invoiceNumber String?
+  updatedAt     DateTime  @updatedAt
+  user          User?     @relation(fields: [userId], references: [id])
+  userId        String?   @db.ObjectId
+}
+
+model Transaction {
+  amount        Float?
+  createdAt     DateTime               @default(now())
+  date          DateTime?
+  id            String                 @id @default(auto()) @map("_id") @db.ObjectId
+  status        EnumTransactionStatus?
+  transactionId String?
+  updatedAt     DateTime               @updatedAt
+  user          User?                  @relation(fields: [userId], references: [id])
+  userId        String?                @db.ObjectId
+}
+
+enum EnumP2PTransferStatus {
+  Option1
+}
+
+enum EnumBankTransferStatus {
+  Option1
+}
+
+enum EnumFreelanceJobPaymentMethod {
+  Option1
+}
+
+enum EnumBitcoinTransactionTransactionType {
+  Option1
+}
+
+enum EnumUserProfileEducationLevel {
+  Option1
+}
+
+enum EnumUserProfileEmojiSettings {
+  Option1
+}
+
+enum EnumUserProfileHeartColor {
+  Option1
+}
+
+enum EnumUserProfileHeartEmojiColor {
+  Option1
+}
+
+enum EnumUserProfilePrivacy {
+  Option1
+}
+
+enum EnumUserProfileProfilePrivacy {
+  Option1
+}
+
+enum EnumUserProfileRelationshipStatus {
+  Option1
+}
+
+enum EnumUserProfileUserEducationLevel {
+  Option1
+}
+
+enum EnumUserProfileUserEmojiSettings {
+  Option1
+}
+
+enum EnumUserProfileUserProfilePrivacy {
+  Option1
+}
+
+enum EnumUserProfileUserRelationshipStatus {
+  Option1
+}
+
+enum EnumMatchmakingRelationshipType {
+  Option1
+}
+
+enum EnumFilterPhotoDuration {
+  Option1
+}
+
+enum EnumFilterPhotoSharingDuration {
+  Option1
+}
+
+enum EnumFilterProfileColor {
+  Option1
+}
+
+enum EnumFilterUserProfileColor {
+  Option1
+}
+
+enum EnumTransactionStatus {
+  Option1
+}
